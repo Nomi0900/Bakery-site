@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Noor · Bakery desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--iv:#FBF7EC;--iv2:#F3EDDB;--pist:#DCE5C6;--em:#1E4A3A;--gold:#B98A2B;--rose:#E6A9A2;--mute:#5F7A6C;--ln:#1E4A3A22;--bad:#B3402F}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--iv);color:var(--em);min-height:100svh}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+.btn{background:var(--em);color:var(--iv);border:0;border-radius:99px;padding:11px 22px;font-weight:500;font-size:14px;transition:.2s}
+.btn:hover{background:#15382c}.btn.sm{padding:7px 14px;font-size:13px}
+.btn.ghost{background:none;color:var(--em);border:1px solid #1E4A3A55}.btn.ghost:hover{background:var(--pist)}
+.btn.bad{background:none;color:var(--bad);border:1px solid #B3402F55}
+.btn:disabled{opacity:.5}a.btn{display:inline-block;text-decoration:none}
+input,select,textarea{width:100%;background:#fff;border:1px solid var(--ln);border-radius:14px;padding:11px 14px;outline:0}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #B98A2B22}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+label input,label select,label textarea{margin-top:6px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--em);font-size:15px}
+label.ck{display:flex;gap:10px;align-items:center;text-transform:none;letter-spacing:0;font-size:15px;font-weight:500;color:var(--em)}
+label.ck input{width:20px;height:20px;margin:0;accent-color:var(--em)}
+/* login */
+#login{min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 0,var(--pist),var(--iv) 60%)}
+.arch{width:min(100%,380px);background:#fff;border:1px solid var(--ln);border-radius:190px 190px 28px 28px;padding:70px 32px 36px;text-align:center;box-shadow:0 40px 80px -40px #1E4A3A66}
+.arch h1{font-size:44px}.arch p{color:var(--mute);margin:6px 0 22px;font-size:14px}
+.arch .err{color:var(--bad);font-size:14px;min-height:20px;margin-top:10px}
+/* shell */
+#app{display:grid;grid-template-columns:230px 1fr;min-height:100svh}
+aside{background:var(--em);color:var(--pist);padding:26px 18px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100svh}
+aside .logo{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--iv);padding:0 12px 18px}
+aside .logo em{color:var(--gold)}
+aside button.nv{display:flex;align-items:center;justify-content:space-between;background:none;border:0;color:inherit;text-align:left;padding:12px 14px;border-radius:99px;font-size:15px}
+aside button.nv:hover{background:#ffffff14}
+aside button.nv.on{background:var(--iv);color:var(--em);font-weight:600}
+.bd{background:var(--gold);color:#fff;border-radius:99px;font-size:12px;padding:1px 8px;font-weight:600}
+aside .sp{flex:1}
+aside .lo{background:none;border:1px solid #DCE5C655;color:var(--pist);border-radius:99px;padding:10px;font-size:14px}
+main{padding:30px 34px 80px;max-width:1400px;width:100%}
+.top{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.top h2{font-size:40px;line-height:1}
+.stats{display:flex;gap:12px;flex-wrap:wrap}
+.st{background:#fff;border:1px solid var(--ln);border-radius:20px;padding:10px 18px;min-width:120px}
+.st b{display:block;font:600 28px 'Cormorant Garamond',serif;line-height:1.1}.st span{font-size:12px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+/* board */
+.board{display:grid;grid-template-columns:repeat(4,minmax(270px,1fr));gap:16px;align-items:start;overflow-x:auto;padding-bottom:10px}
+.col{background:var(--iv2);border-radius:24px;padding:14px;min-height:200px}
+.col>h3{font-size:22px;display:flex;justify-content:space-between;align-items:center;padding:4px 6px 12px}
+.col>h3 small{font:500 12px 'Jost';color:var(--mute)}
+.oc{background:#fff;border:1px solid var(--ln);border-radius:20px;padding:14px;margin-bottom:12px;font-size:14px}
+.oc.new{border-color:var(--gold);box-shadow:0 0 0 3px #B98A2B22}
+.oc.x{opacity:.55}
+.oh{display:flex;gap:6px 8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.oh b{font:600 22px 'Cormorant Garamond',serif}.oh time{white-space:nowrap;margin-left:auto;font-size:12px;color:var(--mute)}
+.pill{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:2px 10px;background:var(--pist)}
+.pill.delivery{background:#F3D9D4}.pill.online{background:#F2E3B8}.pill.bad{background:#F3D2CC;color:var(--bad)}
+.oc ul{list-style:none;padding:8px 0;margin:8px 0;border-block:1px dashed var(--ln)}
+.oc li{display:flex;justify-content:space-between;gap:10px}
+.oc .m{color:var(--mute);font-size:13px;margin-top:4px}.oc a{color:var(--em)}
+.of{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.of b{font:600 20px 'Cormorant Garamond',serif}
+.act{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.empty{color:var(--mute);font-size:14px;text-align:center;padding:24px 8px}
+/* menu */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{background:none;border:1px solid var(--ln);border-radius:99px;padding:7px 16px;font-size:14px}.chip.on{background:var(--em);color:var(--iv)}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.mc{background:#fff;border:1px solid var(--ln);border-radius:130px 130px 22px 22px;overflow:hidden;display:flex;flex-direction:column}
+.mc .ph{aspect-ratio:3/3.2;background:var(--pist);display:grid;place-items:center;color:var(--mute);font-size:13px;position:relative}
+.mc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mc .bd2{padding:14px 16px 16px}
+.mc h3{font-size:22px;line-height:1.1}.mc p{font-size:13px;color:var(--mute);margin:4px 0 8px;min-height:18px}
+.mc .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mc.off{opacity:.6}
+.sw{position:relative;width:46px;height:26px;flex:none}.sw input{opacity:0;position:absolute;inset:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
+.sw i{position:absolute;inset:0;background:#cfd6c6;border-radius:99px;transition:.2s}.sw i::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+i{background:var(--em)}.sw input:checked+i::after{left:23px}
+.add{border:2px dashed #1E4A3A44;border-radius:130px 130px 22px 22px;background:none;min-height:240px;display:grid;place-items:center;color:var(--mute);font-size:15px}
+.add:hover{background:var(--pist)}
+/* reviews */
+.rl{display:grid;gap:14px;max-width:760px}
+.rc{background:#fff;border:1px solid var(--ln);border-radius:22px;padding:18px 20px}
+.rc .st5{color:var(--gold);letter-spacing:2px}.rc blockquote{font:500 22px/1.25 'Cormorant Garamond',serif;margin:6px 0 10px}
+.rc .m{font-size:13px;color:var(--mute);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+/* settings */
+.sg{display:grid;gap:18px;max-width:900px}
+.card{background:#fff;border:1px solid var(--ln);border-radius:26px;padding:24px 26px}
+.card>h3{font-size:26px;margin-bottom:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.hint{font-size:13px;color:var(--mute);margin:-6px 0 14px}
+.bar{position:sticky;bottom:14px;display:flex;justify-content:flex-end}
+/* dialog + toast */
+dialog{border:0;border-radius:28px;padding:26px;width:min(94vw,560px);background:var(--iv);color:var(--em);max-height:92svh;overflow:auto}
+dialog::backdrop{background:#0F2A2088}
+dialog h3{font-size:30px;margin-bottom:14px}
+.pv{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.pv .im{width:96px;aspect-ratio:3/4;border-radius:48px 48px 10px 10px;background:var(--pist) center/cover;flex:none}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,200%);background:var(--em);color:var(--iv);padding:12px 22px;border-radius:99px;z-index:99;transition:.4s;max-width:90vw;font-size:14px}
+#toast.on{transform:translate(-50%,0)}#toast.bad{background:var(--bad)}
+@media(max-width:860px){#app{grid-template-columns:1fr}aside{position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;padding:8px 10px calc(8px + env(safe-area-inset-bottom));z-index:40;gap:2px}
+aside .logo,aside .sp,aside .lo{display:none}aside button.nv{flex:1;justify-content:center;gap:6px;padding:10px 6px;font-size:13px}
+main{padding:20px 16px 110px}.top h2{font-size:32px}.g2{grid-template-columns:1fr}.board{grid-template-columns:repeat(4,82vw)}}
+</style>
+</head>
+<body>
+<section id="login" hidden><form class="arch" id="lf"><h1>Noor<span style="color:var(--gold)">.</span></h1><p>Bakery desk · sign in</p>
+<input type="password" id="pw" placeholder="Password" autocomplete="current-password" required><div class="err" id="le"></div>
+<button class="btn" style="width:100%;margin-top:6px" id="lb">Open the desk</button></form></section>
+
+<div id="app" hidden>
+<aside><div class="logo">Noor<em>.</em></div>
+<button class="nv on" data-v="board">Orders <span class="bd" id="bn" hidden></span></button>
+<button class="nv" data-v="menu">Menu</button>
+<button class="nv" data-v="reviews">Reviews <span class="bd" id="br" hidden></span></button>
+<button class="nv" data-v="settings">Settings</button>
+<div class="sp"></div><button class="lo" id="lo">Log out</button></aside>
+<main id="main"></main></div>
+
+<dialog id="dlg"><form id="df"></form></dialog>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let D=null,view='board',cat='All',rf='pending',sound=false,lastN=0,actx;
+const cur=()=>D.settings.currency;
+function toast(m,bad){const t=$('#toast');t.textContent=m;t.className='on'+(bad?' bad':'');clearTimeout(t._t);t._t=setTimeout(()=>t.className='',2600)}
+async function api(p,o={}){
+  const r=await fetch('/api/admin/'+p,{method:o.method||(o.json?'POST':'GET'),credentials:'same-origin',headers:{...(o.json?{'content-type':'application/json'}:{}),...o.headers},body:o.json?JSON.stringify(o.json):o.body});
+  if(r.status===401){showLogin();throw new Error('Please sign in again.')}
+  const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Something went wrong');return j}
+function showLogin(){$('#app').hidden=true;$('#login').hidden=false;$('#pw').focus()}
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#lb').disabled=true;$('#le').textContent='';
+  try{const r=await fetch('/api/admin/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({password:$('#pw').value})});const j=await r.json();if(!r.ok)throw new Error(j.error);$('#pw').value='';await boot()}
+  catch(x){$('#le').textContent=x.message}$('#lb').disabled=false};
+$('#lo').onclick=async()=>{await fetch('/api/admin/logout',{method:'POST'});D=null;showLogin()};
+async function boot(){try{D=await api('state');$('#login').hidden=true;$('#app').hidden=false;lastN=Math.max(0,...D.orders.map(o=>o.n));render()}catch{showLogin()}}
+$$('aside .nv').forEach(b=>b.onclick=()=>{view=b.dataset.v;render()});
+function render(){$$('aside .nv').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
+  const nw=D.orders.filter(o=>o.status==='new').length,pr=D.reviews.filter(r=>r.status==='pending').length;
+  $('#bn').hidden=!nw;$('#bn').textContent=nw;$('#br').hidden=!pr;$('#br').textContent=pr;
+  ({board:rBoard,menu:rMenu,reviews:rReviews,settings:rSettings})[view]()}
+const ago=t=>{const m=Math.round((Date.now()-t)/6e4);return m<1?'just now':m<60?m+' min ago':m<1440?Math.round(m/60)+' h ago':new Date(t).toLocaleDateString()};
+/* ---------- orders board ---------- */
+const COLS=[['new','New','Just arrived'],['baking','Baking','In progress'],['ready','Ready','For pickup or rider'],['done','Done','Latest 10']];
+const NEXT={new:['baking','Start baking'],baking:['ready','Mark ready'],ready:['done','Complete']};
+function oCard(o){const c=cur(),x=o.status==='cancelled',d=o.phone.replace(/\D/g,'').replace(/^0/,'92');
+  return `<article class="oc ${o.status==='new'?'new':''} ${x?'x':''}"><div class="oh"><b>#${o.n}</b><span class="pill ${o.mode}">${o.mode}</span>${o.pay==='online'?'<span class="pill online">online</span>':''}${x?'<span class="pill bad">cancelled</span>':''}<time>${ago(o.t)}</time></div>
+<div><b>${esc(o.name)}</b> · <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a> · <a target="_blank" rel="noopener" href="https://wa.me/${d}">WhatsApp</a></div>
+<ul>${o.items.map(i=>`<li><span>${i.q} × ${esc(i.name)}</span><span>${c} ${(i.q*i.price).toLocaleString()}</span></li>`).join('')}</ul>
+${o.mode==='delivery'?`<div class="m">📍 ${esc(o.addr)}</div>`:''}${o.note?`<div class="m">📝 ${esc(o.note)}</div>`:''}${o.txn?`<div class="m">Txn ID: <b>${esc(o.txn)}</b></div>`:''}
+<div class="of"><span class="m">${o.fee?'incl. delivery '+c+' '+o.fee:'no delivery fee'}</span><b>${c} ${o.total.toLocaleString()}</b></div>
+<div class="act">${NEXT[o.status]?`<button class="btn sm" data-o="${esc(o.k)}" data-s="${NEXT[o.status][0]}">${NEXT[o.status][1]}</button><button class="btn sm bad" data-o="${esc(o.k)}" data-s="cancelled">Cancel</button>`:`<button class="btn sm ghost" data-o="${esc(o.k)}" data-s="new">Reopen</button>`}</div></article>`}
+function rBoard(){const td=new Date().toDateString(),T=D.orders.filter(o=>new Date(o.t).toDateString()===td&&o.status!=='cancelled');
+  $('#main').innerHTML=`<div class="top"><div><h2>Orders</h2><div class="hint" style="margin:6px 0 0">Updates by itself every 15 seconds.</div></div>
+<div class="stats"><div class="st"><b>${T.length}</b><span>Today</span></div><div class="st"><b>${cur()} ${T.reduce((s,o)=>s+o.total,0).toLocaleString()}</b><span>Today’s sales</span></div>
+<button class="btn ghost" id="snd">${sound?'🔔 Sound on':'🔕 Sound off'}</button></div></div>
+<div class="board">${COLS.map(([k,t,h])=>{let L=D.orders.filter(o=>k==='done'?o.status==='done'||o.status==='cancelled':o.status===k);const n=L.length;if(k==='done')L=L.slice(0,10);
+return `<div class="col"><h3>${t}<small>${n} · ${h}</small></h3>${L.map(oCard).join('')||'<div class="empty">Nothing here</div>'}</div>`}).join('')}</div>
+<div class="card" style="margin-top:22px;max-width:640px"><h3>Download orders</h3><div class="g2"><label>From<input type="date" id="cf"></label><label>To<input type="date" id="ct"></label></div>
+<a class="btn" id="dl" href="#">Download spreadsheet (CSV)</a></div>`;
+  $('#snd').onclick=()=>{sound=!sound;if(sound){actx=actx||new (window.AudioContext||window.webkitAudioContext)();beep()}rBoard()};
+  const link=()=>$('#dl').href='/api/admin/orders.csv?from='+$('#cf').value+'&to='+$('#ct').value;$('#cf').onchange=$('#ct').onchange=link;link()}
+$('#main').addEventListener('click',async e=>{const b=e.target.closest('[data-o]');if(!b)return;b.disabled=true;
+  try{await api('order',{json:{k:b.dataset.o,status:b.dataset.s}});await poll(true)}catch(x){toast(x.message,1)}});
+function beep(){if(!actx)return;[880,1175].forEach((f,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.frequency.value=f;o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(.2,actx.currentTime+i*.18);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+i*.18+.3);o.start(actx.currentTime+i*.18);o.stop(actx.currentTime+i*.18+.32)})}
+async function poll(force){if(!D)return;try{const j=await api('orders');D.orders=j.orders;const mx=Math.max(0,...D.orders.map(o=>o.n));
+  if(mx>lastN){const fresh=D.orders.filter(o=>o.n>lastN);lastN=mx;if(!force){toast('🧁 New order #'+fresh[0].n+' from '+fresh[0].name);if(sound)beep()}}
+  if(view==='board'&&!$('dialog[open]')&&!(document.activeElement&&/INPUT/.test(document.activeElement.tagName)))render();else{const nw=D.orders.filter(o=>o.status==='new').length;$('#bn').hidden=!nw;$('#bn').textContent=nw}}catch{}}
+setInterval(()=>poll(),15000);
+/* ---------- menu ---------- */
+async function saveMenu(msg='Saved'){try{const j=await api('menu',{method:'PUT',json:D.menu});D.menu=j.menu;toast(msg)}catch(x){toast(x.message,1)}}
+function rMenu(){const cats=['All',...new Set([...D.settings.categories,...D.menu.map(m=>m.cat)])].filter((c,i)=>i===0||D.menu.some(m=>m.cat===c)||D.settings.categories.includes(c));
+  const L=D.menu.map((m,i)=>({m,i})).filter(x=>cat==='All'||x.m.cat===cat);
+  $('#main').innerHTML=`<div class="top"><div><h2>Menu</h2><div class="hint" style="margin:6px 0 0">${D.menu.length} items · changes go live straight away.</div></div></div>
+<div class="chips">${cats.map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+<div class="mg">${L.map(({m,i})=>`<div class="mc ${m.available?'':'off'}"><div class="ph">${m.image?`<img src="${esc(m.image)}" alt="">`:'No photo yet'}</div><div class="bd2"><h3>${esc(m.name)}</h3><p>${esc(m.desc)||'&nbsp;'}</p>
+<div class="row"><b class="serif" style="font-size:22px">${cur()} ${m.price.toLocaleString()}</b><span class="pill">${esc(m.cat)}</span></div>
+<div class="row" style="margin-top:12px"><label class="ck" style="margin:0;font-size:13px"><span class="sw"><input type="checkbox" data-av="${i}" ${m.available?'checked':''}><i></i></span>${m.available?'Available':'Sold out'}</label>
+<span><button class="btn sm ghost" data-up="${i}" title="Move up">↑</button> <button class="btn sm ghost" data-dn="${i}" title="Move down">↓</button> <button class="btn sm" data-ed="${i}">Edit</button></span></div>
+${m.featured?'<div class="hint" style="margin:8px 0 0">★ Shown on the home page</div>':''}</div></div>`).join('')}
+<button class="add" data-ed="-1">＋ Add an item</button></div>`}
+$('#main').addEventListener('click',async e=>{const t=e.target,g=a=>t.closest('['+a+']')?.getAttribute(a);
+  if(g('data-c')!=null){cat=g('data-c');rMenu()}
+  else if(g('data-ed')!=null)editItem(+g('data-ed'));
+  else if(g('data-up')!=null||g('data-dn')!=null){const i=+(g('data-up')??g('data-dn')),j=g('data-up')!=null?i-1:i+1;if(j<0||j>=D.menu.length)return;[D.menu[i],D.menu[j]]=[D.menu[j],D.menu[i]];rMenu();saveMenu('Order saved')}});
+$('#main').addEventListener('change',e=>{if(e.target.dataset.av!=null){D.menu[+e.target.dataset.av].available=e.target.checked;rMenu();saveMenu(e.target.checked?'Back on the menu':'Marked sold out')}});
+function cropJpeg(file){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const W=900,H=1200,c=document.createElement('canvas');c.width=W;c.height=H;const r=Math.max(W/im.width,H/im.height),w=im.width*r,h=im.height*r;c.getContext('2d').drawImage(im,(W-w)/2,(H-h)/2,w,h);c.toBlob(b=>b?res(b):rej(new Error('Could not read that image.')),'image/jpeg',.82)};im.onerror=()=>rej(new Error('Could not read that image.'));im.src=URL.createObjectURL(file)})}
+function editItem(i){const n=i<0,m=n?{name:'',desc:'',price:'',cat:D.settings.categories[0]||'',image:'',icon:'',available:true,featured:false}:{...D.menu[i]};
+  $('#df').innerHTML=`<h3>${n?'New item':'Edit item'}</h3>
+<label>Name<input id="f_n" required maxlength="80" value="${esc(m.name)}"></label>
+<div class="g2"><label>Price (${esc(cur())})<input id="f_p" type="number" min="0" required value="${esc(m.price)}"></label>
+<label>Category<select id="f_c">${[...new Set([...D.settings.categories,m.cat])].filter(Boolean).map(c=>`<option ${c===m.cat?'selected':''}>${esc(c)}</option>`).join('')}</select></label></div>
+<label>Short description<input id="f_d" maxlength="160" value="${esc(m.desc)}"></label>
+<label>Photo</label><div class="pv"><div class="im" id="f_pv" style="${m.image?`background-image:url('${esc(m.image)}')`:''}"></div><div style="flex:1">
+<input type="file" id="f_f" accept="image/*"><div class="hint" style="margin:6px 0 0">Any photo works. It is cropped to 3:4 and shrunk automatically.</div></div></div>
+<label>Or paste an image link / path<input id="f_i" value="${esc(m.image)}" placeholder="/images/name.jpg"></label>
+<label class="ck"><input type="checkbox" id="f_a" ${m.available?'checked':''}>Available to order</label>
+<label class="ck"><input type="checkbox" id="f_t" ${m.featured?'checked':''}>Feature on the home page (first 4 are shown)</label>
+<div style="display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap"><span>${n?'':'<button type="button" class="btn bad" id="f_x">Delete</button>'}</span><span><button type="button" class="btn ghost" id="f_q">Cancel</button> <button class="btn" id="f_s">Save item</button></span></div>`;
+  $('#dlg').showModal();$('#f_q').onclick=()=>$('#dlg').close();
+  $('#f_i').oninput=()=>$('#f_pv').style.backgroundImage=$('#f_i').value?`url('${$('#f_i').value.replace(/['"\\]/g,'')}')`:'';
+  $('#f_f').onchange=async()=>{const f=$('#f_f').files[0];if(!f)return;$('#f_s').disabled=true;try{const b=await cropJpeg(f),j=await api('upload',{method:'POST',body:b,headers:{'content-type':'image/jpeg'}});$('#f_i').value=j.url;$('#f_i').oninput();toast('Photo uploaded')}catch(x){toast(x.message,1)}$('#f_s').disabled=false};
+  if(!n)$('#f_x').onclick=()=>{if(confirm('Delete “'+m.name+'”?')){D.menu.splice(i,1);$('#dlg').close();rMenu();saveMenu('Deleted')}};
+  $('#df').onsubmit=e=>{e.preventDefault();Object.assign(m,{name:$('#f_n').value,price:+$('#f_p').value,cat:$('#f_c').value,desc:$('#f_d').value,image:$('#f_i').value.trim(),available:$('#f_a').checked,featured:$('#f_t').checked});
+    if(n)D.menu.push(m);else D.menu[i]=m;$('#dlg').close();rMenu();saveMenu()}}
+/* ---------- reviews ---------- */
+function rReviews(){const L=D.reviews.filter(r=>rf==='all'||r.status===rf).sort((a,b)=>b.t-a.t);const cnt=s=>D.reviews.filter(r=>r.status===s).length;
+  $('#main').innerHTML=`<div class="top"><div><h2>Reviews</h2><div class="hint" style="margin:6px 0 0">Only approved reviews appear on your website.</div></div></div>
+<div class="chips">${[['pending','Waiting'],['approved','Approved'],['hidden','Hidden'],['all','All']].map(([k,t])=>`<button class="chip ${k===rf?'on':''}" data-rf="${k}">${t}${k!=='all'?' ('+cnt(k)+')':''}</button>`).join('')}</div>
+<div class="rl">${L.map(r=>`<div class="rc"><div class="st5">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><blockquote>“${esc(r.text)}”</blockquote>
+<div class="m"><b>${esc(r.name)}</b><span>${new Date(r.t).toLocaleDateString()}</span><span class="pill ${r.status==='hidden'?'bad':''}">${r.status}</span></div>
+<div class="act">${r.status!=='approved'?`<button class="btn sm" data-ra="approved" data-id="${esc(r.id)}">Approve</button>`:''}${r.status!=='hidden'?`<button class="btn sm ghost" data-ra="hidden" data-id="${esc(r.id)}">Hide</button>`:''}<button class="btn sm bad" data-ra="delete" data-id="${esc(r.id)}">Delete</button></div></div>`).join('')||'<div class="empty">No reviews here.</div>'}</div>`}
+$('#main').addEventListener('click',async e=>{const f=e.target.closest('[data-rf]');if(f){rf=f.dataset.rf;rReviews();return}
+  const b=e.target.closest('[data-ra]');if(!b)return;if(b.dataset.ra==='delete'&&!confirm('Delete this review for good?'))return;
+  try{const j=await api('review',{json:{id:b.dataset.id,action:b.dataset.ra}});D.reviews=j.reviews;render();toast('Done')}catch(x){toast(x.message,1)}});
+/* ---------- settings ---------- */
+const GROUPS=[['Your shop',[['shopName','Shop name'],['logo','Logo text'],['address','Address'],['phone','Phone'],['whatsapp','WhatsApp number (country code, digits only)'],['instagram','Instagram link'],['tiktok','TikTok link'],['currency','Currency label (e.g. Rs)']]],
+['Opening hours',[['hours','One per line:  label | time','area','Monday to Friday|8 am – 10 pm']]],
+['Menu sections',[['categories','Categories, separated by commas (order = tab order on the site)','list']]],
+['Ordering',[['allowPickup','Allow pickup orders','ck'],['allowDelivery','Allow delivery orders','ck'],['deliveryFee','Delivery fee','num'],['freeAbove','Free delivery above (0 = never)','num'],['minOrder','Minimum order (0 = none)','num'],['deliveryNote','Delivery note shown to customers','area']]],
+['Payment',[['allowOnline','Allow “pay online now” (customer sends money, then types the transaction ID)','ck'],['paymentInstructions','Payment instructions (Easypaisa, JazzCash, bank…)','area']]]];
+function rSettings(){const S=D.settings,a=D.alerts;
+  $('#main').innerHTML=`<div class="top"><h2>Settings</h2></div><form class="sg" id="sf">${GROUPS.map(([t,F])=>`<div class="card"><h3>${t}</h3><div class="${t==='Your shop'||t==='Ordering'?'g2':''}">${F.map(([k,l,ty])=>
+  ty==='ck'?`<label class="ck"><input type="checkbox" data-k="${k}" ${S[k]?'checked':''}>${l}</label>`:
+  ty==='area'?`<label style="grid-column:1/-1">${l}<textarea data-k="${k}" rows="4">${esc(S[k])}</textarea></label>`:
+  ty==='list'?`<label style="grid-column:1/-1">${l}<input data-k="${k}" value="${esc(S[k].join(', '))}"></label>`:
+  `<label>${l}<input data-k="${k}" ${ty==='num'?'type="number" min="0"':''} value="${esc(S[k])}"></label>`).join('')}</div></div>`).join('')}
+<div class="card"><h3>Order alerts</h3><p class="hint" style="margin:0 0 12px">Discord: <b>${a.discord?'ON':'OFF'}</b> · Telegram: <b>${a.telegram?'ON':'OFF'}</b>. They are switched on with variables in Cloudflare (see the setup guide). You also get the in-page sound and pop-up on the Orders screen.</p><button type="button" class="btn ghost" id="ta">Send a test alert</button></div>
+<div class="bar"><button class="btn" id="ss">Save settings</button></div></form>`;
+  $('#ta').onclick=async()=>{try{const j=await api('test',{json:{}});toast(j.sent?'Test alert sent':'No alert channel is switched on yet',!j.sent)}catch(x){toast(x.message,1)}};
+  $('#sf').onsubmit=async e=>{e.preventDefault();const b={};$$('#sf [data-k]').forEach(i=>{const k=i.dataset.k;b[k]=i.type==='checkbox'?i.checked:Array.isArray(S[k])?i.value.split(','):i.value});
+    try{const j=await api('settings',{method:'PUT',json:b});D.settings=j.settings;toast('Settings saved');rSettings()}catch(x){toast(x.message,1)}}}
+boot();
+</script>
+</body>
+</html>

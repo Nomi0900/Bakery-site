@@ -1,0 +1,187 @@
+{
+ "settings": {
+  "shopName": "Noor Patisserie",
+  "logo": "Noor",
+  "address": "Add your street address, Karachi",
+  "phone": "+92 300 0000000",
+  "whatsapp": "920000000000",
+  "instagram": "https://instagram.com/yourbakery",
+  "tiktok": "https://tiktok.com/@yourbakery",
+  "currency": "Rs",
+  "hours": "Monday to Friday|8 am – 10 pm\nSaturday and Sunday|8 am – 11 pm",
+  "allowPickup": true,
+  "allowDelivery": true,
+  "deliveryFee": 350,
+  "freeAbove": 5000,
+  "minOrder": 0,
+  "deliveryNote": "We deliver within Karachi. Please share your full address.",
+  "allowOnline": true,
+  "paymentInstructions": "Send payment to Easypaisa 03XX-XXXXXXX or JazzCash 03XX-XXXXXXX, then type the transaction ID below.",
+  "categories": [
+   "Pastries",
+   "Breads",
+   "Cakes",
+   "Chai"
+  ]
+ },
+ "menu": [
+  {
+   "id": "pistachio-croissant",
+   "name": "Pistachio Cardamom Croissant",
+   "desc": "Laminated butter, pistachio cream",
+   "price": 620,
+   "cat": "Pastries",
+   "image": "images/croissant.jpg",
+   "icon": "croissant",
+   "available": true,
+   "featured": true
+  },
+  {
+   "id": "kheer-tart",
+   "name": "Kheer Tart",
+   "desc": "Saffron rice pudding, nuts",
+   "price": 450,
+   "cat": "Pastries",
+   "image": "images/kheer-tart.jpg",
+   "icon": "tart",
+   "available": true,
+   "featured": true
+  },
+  {
+   "id": "gulab-jamun-cheesecake",
+   "name": "Gulab Jamun Cheesecake",
+   "desc": "Baked, with rose syrup",
+   "price": 680,
+   "cat": "Pastries",
+   "image": "",
+   "icon": "tart",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "nankhatai-box",
+   "name": "Nankhatai Box (12)",
+   "desc": "Cardamom shortbread, 12 pieces",
+   "price": 900,
+   "cat": "Pastries",
+   "image": "images/nankhatai.jpg",
+   "icon": "cookie",
+   "available": true,
+   "featured": true
+  },
+  {
+   "id": "country-sourdough",
+   "name": "Country Sourdough",
+   "desc": "Wild yeast, 36-hour ferment",
+   "price": 850,
+   "cat": "Breads",
+   "image": "",
+   "icon": "loaf",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "saffron-milk-bread",
+   "name": "Saffron Milk Bread",
+   "desc": "Soft, golden, lightly sweet",
+   "price": 650,
+   "cat": "Breads",
+   "image": "",
+   "icon": "loaf",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "seeded-multigrain",
+   "name": "Seeded Multigrain",
+   "desc": "Flax, sunflower, oats",
+   "price": 720,
+   "cat": "Breads",
+   "image": "",
+   "icon": "loaf",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "rose-pistachio-cake",
+   "name": "Rose Pistachio Cake (1 lb)",
+   "desc": "Rose cream, crushed pistachio",
+   "price": 6500,
+   "cat": "Cakes",
+   "image": "images/rose-cake.jpg",
+   "icon": "cake",
+   "available": true,
+   "featured": true
+  },
+  {
+   "id": "ras-malai-cake",
+   "name": "Ras Malai Cake (1 lb)",
+   "desc": "Cardamom sponge, milk cream",
+   "price": 7200,
+   "cat": "Cakes",
+   "image": "",
+   "icon": "cake",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "chocolate-hazelnut",
+   "name": "Chocolate Hazelnut (1 lb)",
+   "desc": "Dark ganache, three layers",
+   "price": 5800,
+   "cat": "Cakes",
+   "image": "",
+   "icon": "cake",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "doodh-patti",
+   "name": "Doodh Patti Chai",
+   "desc": "Strong, creamy, classic",
+   "price": 280,
+   "cat": "Chai",
+   "image": "",
+   "icon": "cookie",
+   "available": true,
+   "featured": false
+  },
+  {
+   "id": "kashmiri-chai",
+   "name": "Kashmiri Chai",
+   "desc": "Pink, nutty, finished with almonds",
+   "price": 380,
+   "cat": "Chai",
+   "image": "",
+   "icon": "cookie",
+   "available": true,
+   "featured": false
+  }
+ ],
+ "reviews": [
+  {
+   "id": "s1",
+   "name": "Ayesha K.",
+   "rating": 5,
+   "text": "The pistachio croissant is unreal. I drive across the city for it.",
+   "status": "approved",
+   "t": 1
+  },
+  {
+   "id": "s2",
+   "name": "Sana & Hamza",
+   "rating": 5,
+   "text": "Our mehndi cake looked stunning and tasted even better.",
+   "status": "approved",
+   "t": 2
+  },
+  {
+   "id": "s3",
+   "name": "Bilal R.",
+   "rating": 5,
+   "text": "Finally a bakery that gets desi flavours right. The kheer tart, wow.",
+   "status": "approved",
+   "t": 3
+  }
+ ]
+}
